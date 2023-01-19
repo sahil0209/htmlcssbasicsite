@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <style>
         div#container{
             background-color: aqua;
@@ -15,14 +16,11 @@
             font-size: 13pt;
             font-weight: bolder;
             width: 50%;
-            height: 100vh;
+            height: fit-content;
             border-radius: 12px;
         }
 
-        input.formData{
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-            font-size: 10pt;
-        }
+       
 
     </style>
 
@@ -39,29 +37,61 @@
     </script>
 </head>
 <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <div id="container">
-        <form onsubmit="return validate();" >
-            Name: <input class="formData" type="text" name="name" required placeholder="Enter your name"><br><br>
-
-            Gender: Male<input class="formData" type="radio" name="gender"> Female<input class="formData" type="radio" name="gender"><br><br>
+        <h1>Registration Form</h1>
+        <form onsubmit="return validate();" class="p-3">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter the Name">
+            </div>
             
-            Email: <input class="formData" type="email" name="email" required><br><br>
+            <div class="mb-2">
+                <label class="form-label">Gender: </label> Male<input class="form-check-input ml-2" type="radio" name="gender"> Female<input class="form-check-input" type="radio" name="gender">
+            </div>
 
-            Location: <select name="location" id="location">
-                <option value="Pune">Pune</option>
-                <option value="Delhi">Delhi</option>
-                <option value="Mumbai">Mumbai</option>
-            </select>
-            <br><br>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the email address">
+            </div>
 
-            Software Knowledge: Word<input class="formData" type="checkbox"> Excel<input class="formData" type="checkbox"> Python<input class="formData" type="checkbox">
+            <div class="mb-3" style="width: 18%;">
+                <select class="form-select" aria-label="Default select example" style="background-color: cyan;">
+                    <option selected>Location</option>
+                    <option value="pune">Pune</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="Bangalore">Bangalore</option>
+                  </select>
+            </div>
 
-            <br><br>
+            <div class="checks mb-3" style="display: flex;">
+                <label for="form-label">Software Knowledge:</label>
+                <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      C++
+                    </label>
+                  </div>
+                  <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      Java
+                    </label>
+                  </div>
+                  <div class="form-check mx-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                    <label class="form-check-label" for="flexCheckChecked">
+                      PHP
+                    </label>
+                  </div>
 
-            Remarks: 
-            <textarea name="remarks" id="remarks" cols="30" rows="5"></textarea>
-            <br><br>
-            <input class="formData" type="submit" value="JUST CLICK IT" name="submit">
+            </div>
+            <div class="mb-4">
+                <label for="floatingTextarea">Remarks</label>
+                <textarea class="form-control" placeholder="Leave a remark here" id="floatingTextarea"></textarea>
+                
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </body>

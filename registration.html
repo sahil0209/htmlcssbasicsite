@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
     <style>
         div#container{
             background-color: aqua;
@@ -26,13 +27,29 @@
 
     <script>
         let validate = ()=>{
-            let x = document.getElementsByName('name');
-            let y = document.getElementsByName('email');
-            if(x.length!==0 && y.length!==0){
-               alert("Your form has been submitted");
+            let name = document.getElementById('name');
+            let email = document.getElementById('email');
+            let male = document.getElementById('male');
+            let female = document.getElementById('female');
+            let course = document.getElementById('course');
+            let req = document.getElementById('requirements');
+            let gender = male.checked?"male":"female";
+            if(name.value!=="" && email.value!==""){
+                alert("Name: "+name.value+"\nGender: "+gender+"\nEmail: "+email.value+"\nCourse Required: "+course.value+"\nOther Requirements: "+req.value+"\n");
                 return true;
+            } else{
+                if(name.value==="" && email.value===""){
+                    alert("Enter the name and email");
+                    name.focus();
+                } else if(name.value===""){
+                    alert("Enter the name");
+                    name.focus();
+                }else{
+                    alert("Enter the email");
+                    email.focus();
+                }
+                return false;
             }
-            return false;
         }
     </script>
 </head>
@@ -40,31 +57,31 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <div id="container">
         <h1>Registration Form</h1>
-        <form onsubmit="return validate();" class="p-3">
+        <form action="thanks.html" onsubmit="return validate();" class="p-3">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control" id="name" aria-describedby="name" placeholder="Enter the Name">
             </div>
             
             <div class="mb-2">
-                <label class="form-label">Gender: </label> Male<input class="form-check-input ml-2" type="radio" name="gender"> Female<input class="form-check-input" type="radio" name="gender">
+                <label class="form-label">Gender: </label> Male<input class="form-check-input ml-2" id="male" type="radio" name="gender"> Female<input id="female" class="form-check-input" type="radio" name="gender">
             </div>
 
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter the email address">
+                <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter the email address">
             </div>
 
             <div class="mb-3" style="width: 18%;">
-                <select class="form-select" aria-label="Default select example" style="background-color: cyan;">
-                    <option selected>Location</option>
-                    <option value="pune">Pune</option>
-                    <option value="delhi">Delhi</option>
-                    <option value="Bangalore">Bangalore</option>
+                <select id="course" class="form-select" aria-label="Default select example" style="background-color: cyan;">
+                    <option selected value="Course Required">Course Required</option>
+                    <option id="mean" value="MEAN">MEAN</option>
+                    <option id="mern" value="MERN">MERN</option>
+                    <option id="devops" value="DEVOPS">DEVOPS</option>
                   </select>
             </div>
 
-            <div class="checks mb-3" style="display: flex;">
+            <!-- <div class="checks mb-3" style="display: flex;">
                 <label for="form-label">Software Knowledge:</label>
                 <div class="form-check mx-3">
                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
@@ -85,10 +102,10 @@
                     </label>
                   </div>
 
-            </div>
+            </div> -->
             <div class="mb-4">
-                <label for="floatingTextarea">Remarks</label>
-                <textarea class="form-control" placeholder="Leave a remark here" id="floatingTextarea"></textarea>
+                <label for="requirements">Other Requirements</label>
+                <textarea class="form-control" placeholder="Leave a remark here" id="requirements"></textarea>
                 
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
